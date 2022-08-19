@@ -1,4 +1,7 @@
 from flask import Flask,render_template
+# import markdown2
+import os
+
 
 app = Flask(__name__)
 
@@ -8,5 +11,13 @@ def home_page():
 
 @app.route("/blog")
 def blog_page():
-    return render_template('')     
+    l=list_dir('C://Users//surya//Desktop//Void//Antlia//么 Itnaava 么//pages//blog')
+    return render_template('blog.html',file_list=l)
+    
+def list_dir(path):
+    dir_list=os.listdir(path)
+    return dir_list
+
+# def md_to_html():
+
 app.run(debug=True)

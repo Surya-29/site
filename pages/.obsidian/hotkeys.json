@@ -1,1 +1,11 @@
-{}
+{
+  "templater-obsidian:blog/templater_blog.md": [
+    {
+      "modifiers": [
+        "Alt",
+        "Shift"
+      ],
+      "key": "L"
+    }
+  ]
+}

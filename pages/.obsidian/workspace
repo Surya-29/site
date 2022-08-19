@@ -9,9 +9,9 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "blog/test.md",
+            "file": "blog/nn_scratch.md",
             "mode": "preview",
-            "source": true
+            "source": false
           }
         }
       }
@@ -77,7 +77,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "blog/test.md",
+                "file": "blog/nn_scratch.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -94,7 +94,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "blog/test.md",
+                "file": "blog/nn_scratch.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -117,7 +117,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "blog/test.md"
+                "file": "blog/nn_scratch.md"
               }
             }
           }
@@ -130,8 +130,9 @@
   },
   "active": "a6bef88c3c54581f",
   "lastOpenFiles": [
-    "blog/templater_blog.md",
+    "blog/nn_scratch.md",
     "blog/test.md",
+    "blog/templater_blog.md",
     "blog/test_blog.md"
   ]
 }
