@@ -1,5 +1,9 @@
 {% extends 'base.html' %} {% block body %}
-<ul>
-    <li>{{file_list}}</li>
-</ul>
+<table>
+  <tr>
+    {% for x in file_dict%}
+    <li><a href="/blog/{{file_dict[x][1]}}">{{x}}</a><body class="blog_date">{{file_dict[x][0]}}</body></li>
+    {% endfor %}
+  </tr>
+</table>
 {% endblock %}

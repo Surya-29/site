@@ -10,7 +10,7 @@
           "type": "markdown",
           "state": {
             "file": "blog/nn_scratch.md",
-            "mode": "preview",
+            "mode": "source",
             "source": false
           }
         }
@@ -130,9 +130,10 @@
   },
   "active": "a6bef88c3c54581f",
   "lastOpenFiles": [
-    "blog/nn_scratch.md",
-    "blog/test.md",
     "blog/templater_blog.md",
+    "blog/test.md",
+    "blog/nn_scratch.md",
+    "blog/Pasted image 20220820094941.png",
     "blog/test_blog.md"
   ]
 }
