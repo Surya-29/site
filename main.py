@@ -15,7 +15,7 @@ def blog_page():
     for i in dir_lis:
         temp, article_info = md_to_html("pages/blog/"+i)
         article_info['url']="/"+article_info['slug']
-        if (i[:-3]==article_info['slug']):
+        if i[:-3]==article_info['slug']:
             d[article_info['title']]=[article_info['date']]+[article_info['url']]
     return render_template('blog.html', file_dict=d)
 
