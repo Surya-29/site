@@ -23,12 +23,16 @@ def blog_page():
 def md_test(url):
     with open('templates/new.html', 'w') as f:
         body, article_info = md_to_html("pages/blog/"+url+'.md')
-        body = "{% extends 'base.html' %} {% block body %}\n"+'<section class=post-date>' + \
-            article_info['date']+'</section>\n'+'<h1>'+article_info['title']+'</h1>\n' + \
+        body = "{% extends 'base.html' %} {% block body %}\n"+'<p class=post_date>' + \
+            article_info['date']+'</p>\n'+'<h1>'+article_info['title']+'</h1>\n' + \
             '<h2 class="subtitle">' + \
             article_info['subtitle']+'</h2>\n'+body+"\n{% endblock %}"
         f.writelines(body)
     return render_template('new.html')
+
+@app.errorhandler(404)
+def page_404(e):
+    return render_template('404.html'),404
 
 def list_dir(path):
     dir_list = os.listdir(path)

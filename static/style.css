@@ -92,6 +92,22 @@ nav li:first-child {
 .footer{
   padding-top: 30px;
 }
+.post_date{
+  color: var(--gray);
+  justify-content: right;
+}
+.content{
+  display: block;
+  padding: 50px 0 15px 0;
+}
+.content li{
+  display: flex;
+}
+span{
+  flex:auto;
+  text-align: right;
+  justify-content: right;
+}
 
 @media (max-width: 385px) {
 

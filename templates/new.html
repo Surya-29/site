@@ -1,28 +1,84 @@
 {% extends 'base.html' %} {% block body %}
-<section class=post-date>2022-08-19</section>
-<h1>First blog</h1>
-<h2 class="subtitle">Just figuring out stuff</h2>
-<p>This is the content of the page.</p>
+<p class=post_date>21 Aug, 2022</p>
+<h1>Music Generation</h1>
+<h2 class="subtitle">Using LSTM and language models</h2>
+<h4>Project Title</h4>
 
-<p>just copy pasta ig</p>
+<p>Composition of music by training a model on sheet music.</p>
 
-<p>For all those struggling to get the formatting work even after trying the valid combinations in Visual Studio Code, don't forget to select the appropriate programming language type, it is at the bottom right in visual studio code window next to that smiley. Once you do that I found it works out of the box and you don't need any additional plugin to format code</p>
-
-<div class="codehilite"><pre><span></span><code><span class="kn">import</span> <span class="nn">math</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span>
-</code></pre></div>
-
-<p>How fast and static is this webpage?</p>
-
-<blockquote>
-  <p>Can it be rendered properly</p>
-</blockquote>
+<h4>Project Members</h4>
 
 <ul>
-<li>Bulltein points</li>
-<li>1</li>
-<li>2</li>
+<li>Surya Narayan AI&amp;DS B</li>
+<li>Vishal Kalathil AI&amp;DS B</li>
+</ul>
+
+<h4>Abstract</h4>
+
+<p>Our goal is to compose music (more like short piece of music) by training various deep learning models on a specific instrument's MIDI dataset.We will be looking into both RNN(principally LSTM networks) based and NLP based model as a music generation system,but our primary focus will be more on the latter.</p>
+
+<h4>Introduction</h4>
+
+<p>The art of ordering tones or sound in succession, in combination is music. It is a temporal relationship to produce a composition of notes having continuity and unity.Predicting the likely next few notes can be thought of as a time series problem due to the presence of long-term structural patterns in the music sequence.Also due to its sequential nature ,we can also consider this as an NLP problem.</p>
+
+<p>Techniques like Recurrent Neural Networks (RNN's) can be used ,which incorporates dependencies across time. Long Short Term Memory is one such variant of RNN, that is capable of capturing long-term temporal dependencies in the given music dataset and it might be a great fit for generating music.</p>
+
+<p>Transformer archietecture looks really promising not only for NLP problems but also for music generation since it is faster and have really good memory so extracting long-term structural patterns wouldn't be a problem.</p>
+
+<p><em><strong>Preprocessing of musical instrument digital interface (MIDI) Files</strong></em></p>
+
+<p>Using the <a href='https://magenta.tensorflow.org/datasets/'>instrument dataset</a> (i.e.,represented as an MIDI files) we have to extract the features required. Python libraries like music21,python-midi,etc,. can be used to perform the necessary operations.MIDI files plays an important role in extracting information about note sequence, note velocity and the time component.</p>
+
+<p>For training a model with this data we might need to encode the MIDI file into a music notation format i.e we can use the <em>music21</em> library to read the MIDI file, using that returns objects that specifies the notes and chords of the music file.</p>
+
+<p>Now that we have extracted all the notes and chords we can create the sequences that will serve as the input of our model.(i.e Sequencing)</p>
+
+<p>We will approach this problem by framing music generation as a language modeling problem. The idea is to encode midi files into a vocabulary of tokens(i.e Tokenization) and have the neural network predict the next token in a sequence from thousands of midi-files.</p>
+
+<p><em><strong>Model Training</strong></em></p>
+
+<ul>
+<li><p><u>RNN based approach</u>:</p>
+
+<p>Long Term Short Memory (LSTM),special type of RNN variant will be used.Since traditional RNN based models will not be able to retain information for long periods of time.</p>
+
+<p>Image from <a href='https://towardsdatascience.com/neural-networks-for-music-generation-97c983b50204?gi=57ecd2161d78'>article</a> </p>
+
+<p><a href="https://arxiv.org/pdf/1909.09586.pdf">Link</a>:Brief on LSTM architecture and function. </p></li>
+<li><p><u>Language models based approach</u></p>
+
+<blockquote>
+  <p>GPT is an architecture based on Transformers decoders stacked together.The Transformer is a sequence model that leverage self-attention and that already had impressive results for generation tasks involving long-range dependencies. It is essentially the vanilla Transformer model with its encoder block and cross-attention mechanism stripped away — so that it can perform more efficiently on unsupervised tasks. This makes it well suited for music representation.</p>
+</blockquote>
+
+<p>Source from <a href='https://towardsdatascience.com/neural-networks-for-music-generation-97c983b50204?gi=57ecd2161d78'>article</a> </p>
+
+<p>Image form <a href='https://towardsdatascience.com/creating-a-pop-music-generator-with-the-transformer-5867511b382a?gi=d1154441bcd7'>article</a></p>
+
+<p>Apart from GPT language model we will also try to implement this approach on various other language models like BERT,GPT-2,etc,. </p></li>
+</ul>
+
+<h4>References</h4>
+
+<ul>
+<li><p><strong>Dataset</strong> :</p>
+
+<ul>
+<li><a href="https://magenta.tensorflow.org/datasets/groove">https://magenta.tensorflow.org/datasets/groove</a></li>
+<li><a href="https://magenta.tensorflow.org/datasets/maestro">https://magenta.tensorflow.org/datasets/maestro</a></li>
+<li><a href="https://magenta.tensorflow.org/datasets/nsynth">https://magenta.tensorflow.org/datasets/nsynth</a></li>
+</ul></li>
+<li><p><strong>Articles and Research Papers :</strong></p>
+
+<ul>
+<li><a href="https://towardsdatascience.com/creating-a-pop-music-generator-with-the-transformer-5867511b382a?gi=d1154441bcd7">https://towardsdatascience.com/creating-a-pop-music-generator-with-the-transformer-5867511b382a?gi=d1154441bcd7</a></li>
+<li>RNN Architecture : <a href="https://karpathy.github.io/2015/05/21/rnn-effectiveness/">https://karpathy.github.io/2015/05/21/rnn-effectiveness/</a></li>
+<li><a href="https://arxiv.org/ftp/arxiv/papers/1908/1908.01080.pdf">https://arxiv.org/ftp/arxiv/papers/1908/1908.01080.pdf</a></li>
+<li><a href="https://medium.com/artists-and-machine-intelligence/neural-nets-for-generating-music-f46dffac21c0">https://medium.com/artists-and-machine-intelligence/neural-nets-for-generating-music-f46dffac21c0</a></li>
+<li>Detailed working on LSTM networks : <a href="http://www.bioinf.jku.at/publications/older/2604.pdf">http://www.bioinf.jku.at/publications/older/2604.pdf</a></li>
+<li>Transformer Architecture : <a href="https://jalammar.github.io/illustrated-transformer/">https://jalammar.github.io/illustrated-transformer/</a></li>
+<li>Research articles by magenta : <a href="https://magenta.tensorflow.org/research/">https://magenta.tensorflow.org/research/</a></li>
+</ul></li>
 </ul>
 
 {% endblock %}

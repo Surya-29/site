@@ -1,14 +1,14 @@
 ---
 
-template: 
-
 slug: test
 
 title: First blog
 
 subtitle: Just figuring out stuff
 
-date: 2022-08-19
+date: 21 Aug, 2022
+
+---
 
 ---
 

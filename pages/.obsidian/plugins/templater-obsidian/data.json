@@ -24,6 +24,6 @@
     "blog/templater_blog.md"
   ],
   "startup_templates": [
-    ""
+    "blog/templater_blog.md"
   ]
 }
