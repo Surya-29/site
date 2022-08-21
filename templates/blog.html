@@ -1,9 +1,12 @@
 {% extends 'base.html' %} {% block body %}
 <table>
-  <div class="content">
+  <tbody>
     {% for x in file_dict%}
-    <li><a href="/blog/{{file_dict[x][1]}}">{{x}}</a><span class="post_date">{{file_dict[x][0]}}</span></body></li>
+    <tr>
+      <td align="left"><a href="/blog/{{file_dict[x][1]}}">{{x}}</a></td>
+      <td align="right" class="post_date">{{file_dict[x][0]}}</td>
+    </tr>
     {% endfor %}
-  </div>
+  </tbody>
 </table>
 {% endblock %}
