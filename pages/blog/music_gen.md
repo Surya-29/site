@@ -30,7 +30,7 @@ Techniques like Recurrent Neural Networks (RNN's) can be used ,which incorporate
 
 Transformer archietecture looks really promising not only for NLP problems but also for music generation since it is faster and have really good memory so extracting long-term structural patterns wouldn't be a problem.
 
-_**Preprocessing of musical instrument digital interface (MIDI) Files**_
+**Preprocessing of musical instrument digital interface (MIDI) Files**
 
 Using the <a href='https://magenta.tensorflow.org/datasets/'>instrument dataset</a> (i.e.,represented as an MIDI files) we have to extract the features required. Python libraries like music21,python-midi,etc,. can be used to perform the necessary operations.MIDI files plays an important role in extracting information about note sequence, note velocity and the time component.
 
@@ -40,7 +40,7 @@ Now that we have extracted all the notes and chords we can create the sequences 
 
 We will approach this problem by framing music generation as a language modeling problem. The idea is to encode midi files into a vocabulary of tokens(i.e Tokenization) and have the neural network predict the next token in a sequence from thousands of midi-files.
 
-_**Model Training**_
+**Model Training**
 
 - <u>RNN based approach</u>:
 
