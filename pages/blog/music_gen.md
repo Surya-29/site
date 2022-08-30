@@ -58,8 +58,20 @@ We will approach this problem by framing music generation as a language modeling
 		
 	Image form <a href='https://towardsdatascience.com/creating-a-pop-music-generator-with-the-transformer-5867511b382a?gi=d1154441bcd7'>article</a>
 	
-	Apart from GPT language model we will also try to implement this approach on various other language models like BERT,GPT-2,etc,. 
-		
+	Apart from GPT language `model` we will also try to implement this approach on various other language models like BERT,GPT-2,etc,. 
+``` CSS
+code {
+	font-family:'Fira Code';
+	font-size: 12px;
+	overflow-x: auto;
+	overflow-y: hidden;
+	padding: 1px;
+	min-width: 0;
+	background-color: var(--light-gray)!important;
+	margin-bottom: 10px;
+}
+```
+
 #### References
 - **Dataset** :
   - <https://magenta.tensorflow.org/datasets/groove>

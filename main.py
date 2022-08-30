@@ -1,8 +1,10 @@
 from flask import Flask, render_template
+from feedgen.feed import FeedGenerator
 import markdown2
 import os
 
 app = Flask(__name__)
+global d;
 
 @app.route("/")
 def home_page():
@@ -10,13 +12,15 @@ def home_page():
 
 @app.route("/blog")
 def blog_page():
+    global d;
     dir_lis = list_dir('pages/blog')
-    d={}
+    d = {}
     for i in dir_lis:
-        temp, article_info = md_to_html("pages/blog/"+i)
-        article_info['url']="/"+article_info['slug']
-        if i[:-3]==article_info['slug']:
-            d[article_info['title']]=[article_info['date']]+[article_info['url']]
+        temp,article_info = md_to_html("pages/blog/"+i)
+        article_info['url'] = "/"+article_info['slug']
+        if i[:-3] == article_info['slug']:
+            d[article_info['title']] = [
+                article_info['date']]+[article_info['url']]
     return render_template('blog.html', file_dict=d)
 
 @app.route("/blog/<url>")
@@ -32,7 +36,13 @@ def md_test(url):
 
 @app.errorhandler(404)
 def page_404(e):
-    return render_template('404.html'),404
+    return render_template('404.html'), 404
+
+# @app.route("/blog/feed.xml")
+# def feed_generator():
+#     global d
+#     # fg = FeedGenerator()
+#     print(d)
 
 def list_dir(path):
     dir_list = os.listdir(path)
@@ -45,6 +55,7 @@ def md_to_html(file_path):
         content, extras=['metadata', 'fenced-code-blocks', 'pyshell'])
     meta_data = html_cont.metadata
     return html_cont, meta_data
+
 
 if __name__ == '__main__':
     app.run(debug=True)

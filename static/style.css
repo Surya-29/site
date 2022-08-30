@@ -27,14 +27,28 @@ html {
 body{
   font-family:'Dosis', sans-serif;
   font-size: 17px;
+  letter-spacing:0.25px;
+  word-spacing: 1.25px;
   max-width: 655px;
   padding: 0 13px;
   margin: 40px auto;
 }
 
-
 .intro{
   padding: 50px 0 50px 0;
+}
+code {
+  font-family:'Fira Code';
+  font-size: 12px;
+  
+}
+pre {
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 10px;
+  min-width: 0;
+  background-color: var(--light-gray)!important;
+  margin-bottom: 10px;
 }
 main {
   font-size: 14px;
