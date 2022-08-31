@@ -4,7 +4,6 @@ import markdown2
 import os
 
 app = Flask(__name__)
-global d;
 
 @app.route("/")
 def home_page():
