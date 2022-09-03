@@ -1,0 +1,97 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<feed xmlns="http://www.w3.org/2005/Atom"><id>http://127.0.0.1:5000/</id><title>Itnaava</title><updated>2022-09-03T04:58:52.620173+00:00</updated><author><name>Surya</name><email>abc@gmail.com</email></author><link href="http://127.0.0.1:5000/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="0.9.0">python-feedgen</generator><entry><id>nn_scratch</id><title>Neural Networks From Scratch</title><updated>2022-09-03T04:58:52.620173+00:00</updated><link href="http://127.0.0.1:5000/blog/nn_scratch" rel="alternate"/><summary type="html">&lt;h2&gt;Intuition behind  neural networks&lt;/h2&gt;
+
+&lt;p&gt;It all started with Artificial Neural Network&lt;/p&gt;
+</summary></entry><entry><id>music_gen</id><title>Music Generation</title><updated>2022-09-03T04:58:52.620173+00:00</updated><link href="http://127.0.0.1:5000/blog/music_gen" rel="alternate"/><summary type="html">&lt;h4&gt;Project Title&lt;/h4&gt;
+
+&lt;p&gt;Composition of music by training a model on sheet music.&lt;/p&gt;
+
+&lt;h4&gt;Project Members&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Surya Narayan AI&amp;amp;DS B&lt;/li&gt;
+&lt;li&gt;Vishal Kalathil AI&amp;amp;DS B&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4&gt;Abstract&lt;/h4&gt;
+
+&lt;p&gt;Our goal is to compose music (more like short piece of music) by training various deep learning models on a specific instrument's MIDI dataset.We will be looking into both RNN(principally LSTM networks) based and NLP based model as a music generation system,but our primary focus will be more on the latter.&lt;/p&gt;
+
+&lt;h4&gt;Introduction&lt;/h4&gt;
+
+&lt;p&gt;The art of ordering tones or sound in succession, in combination is music. It is a temporal relationship to produce a composition of notes having continuity and unity.Predicting the likely next few notes can be thought of as a time series problem due to the presence of long-term structural patterns in the music sequence.Also due to its sequential nature ,we can also consider this as an NLP problem.&lt;/p&gt;
+
+&lt;p&gt;Techniques like Recurrent Neural Networks (RNN's) can be used ,which incorporates dependencies across time. Long Short Term Memory is one such variant of RNN, that is capable of capturing long-term temporal dependencies in the given music dataset and it might be a great fit for generating music.&lt;/p&gt;
+
+&lt;p&gt;Transformer archietecture looks really promising not only for NLP problems but also for music generation since it is faster and have really good memory so extracting long-term structural patterns wouldn't be a problem.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Preprocessing of musical instrument digital interface (MIDI) Files&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Using the &lt;a href='https://magenta.tensorflow.org/datasets/'&gt;instrument dataset&lt;/a&gt; (i.e.,represented as an MIDI files) we have to extract the features required. Python libraries like music21,python-midi,etc,. can be used to perform the necessary operations.MIDI files plays an important role in extracting information about note sequence, note velocity and the time component.&lt;/p&gt;
+
+&lt;p&gt;For training a model with this data we might need to encode the MIDI file into a music notation format i.e we can use the &lt;em&gt;music21&lt;/em&gt; library to read the MIDI file, using that returns objects that specifies the notes and chords of the music file.&lt;/p&gt;
+
+&lt;p&gt;Now that we have extracted all the notes and chords we can create the sequences that will serve as the input of our model.(i.e Sequencing)&lt;/p&gt;
+
+&lt;p&gt;We will approach this problem by framing music generation as a language modeling problem. The idea is to encode midi files into a vocabulary of tokens(i.e Tokenization) and have the neural network predict the next token in a sequence from thousands of midi-files.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Model Training&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;u&gt;RNN based approach&lt;/u&gt;:&lt;/p&gt;
+
+&lt;p&gt;Long Term Short Memory (LSTM),special type of RNN variant will be used.Since traditional RNN based models will not be able to retain information for long periods of time.&lt;/p&gt;
+
+&lt;p&gt;Image from &lt;a href='https://towardsdatascience.com/neural-networks-for-music-generation-97c983b50204?gi=57ecd2161d78'&gt;article&lt;/a&gt; &lt;/p&gt;
+
+&lt;p&gt;&lt;a href="https://arxiv.org/pdf/1909.09586.pdf"&gt;Link&lt;/a&gt;:Brief on LSTM architecture and function. &lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;u&gt;Language models based approach&lt;/u&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;GPT is an architecture based on Transformers decoders stacked together.The Transformer is a sequence model that leverage self-attention and that already had impressive results for generation tasks involving long-range dependencies. It is essentially the vanilla Transformer model with its encoder block and cross-attention mechanism stripped away â€” so that it can perform more efficiently on unsupervised tasks. This makes it well suited for music representation.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Source from &lt;a href='https://towardsdatascience.com/neural-networks-for-music-generation-97c983b50204?gi=57ecd2161d78'&gt;article&lt;/a&gt; &lt;/p&gt;
+
+&lt;p&gt;Image form &lt;a href='https://towardsdatascience.com/creating-a-pop-music-generator-with-the-transformer-5867511b382a?gi=d1154441bcd7'&gt;article&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Apart from GPT language &lt;code&gt;model&lt;/code&gt; we will also try to implement this approach on various other language models like BERT,GPT-2,etc,. &lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="nd"&gt;@app&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;route&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;/blog&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;blog_page&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
+    &lt;span class="k"&gt;global&lt;/span&gt; &lt;span class="n"&gt;d&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="n"&gt;dir_lis&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;list_dir&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;pages/blog&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="n"&gt;d&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{}&lt;/span&gt;
+    &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;dir_lis&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+        &lt;span class="n"&gt;temp&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;article_info&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;md_to_html&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;pages/blog/&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+        &lt;span class="n"&gt;article_info&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;url&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;/&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="n"&gt;article_info&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;slug&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+        &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;[:&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="n"&gt;article_info&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;slug&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]:&lt;/span&gt;
+            &lt;span class="n"&gt;d&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;article_info&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;title&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;
+                &lt;span class="n"&gt;article_info&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;date&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]]&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;article_info&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;url&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]]&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;render_template&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;blog.html&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;file_dict&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;d&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h4&gt;References&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Dataset&lt;/strong&gt; :&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://magenta.tensorflow.org/datasets/groove"&gt;https://magenta.tensorflow.org/datasets/groove&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://magenta.tensorflow.org/datasets/maestro"&gt;https://magenta.tensorflow.org/datasets/maestro&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://magenta.tensorflow.org/datasets/nsynth"&gt;https://magenta.tensorflow.org/datasets/nsynth&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Articles and Research Papers :&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://towardsdatascience.com/creating-a-pop-music-generator-with-the-transformer-5867511b382a?gi=d1154441bcd7"&gt;https://towardsdatascience.com/creating-a-pop-music-generator-with-the-transformer-5867511b382a?gi=d1154441bcd7&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;RNN Architecture : &lt;a href="https://karpathy.github.io/2015/05/21/rnn-effectiveness/"&gt;https://karpathy.github.io/2015/05/21/rnn-effectiveness/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://arxiv.org/ftp/arxiv/papers/1908/1908.01080.pdf"&gt;https://arxiv.org/ftp/arxiv/papers/1908/1908.01080.pdf&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://medium.com/artists-and-machine-intelligence/neural-nets-for-generating-music-f46dffac21c0"&gt;https://medium.com/artists-and-machine-intelligence/neural-nets-for-generating-music-f46dffac21c0&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Detailed working on LSTM networks : &lt;a href="http://www.bioinf.jku.at/publications/older/2604.pdf"&gt;http://www.bioinf.jku.at/publications/older/2604.pdf&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Transformer Architecture : &lt;a href="https://jalammar.github.io/illustrated-transformer/"&gt;https://jalammar.github.io/illustrated-transformer/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Research articles by magenta : &lt;a href="https://magenta.tensorflow.org/research/"&gt;https://magenta.tensorflow.org/research/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</summary></entry></feed>

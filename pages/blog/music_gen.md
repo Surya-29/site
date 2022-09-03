@@ -59,17 +59,20 @@ We will approach this problem by framing music generation as a language modeling
 	Image form <a href='https://towardsdatascience.com/creating-a-pop-music-generator-with-the-transformer-5867511b382a?gi=d1154441bcd7'>article</a>
 	
 	Apart from GPT language `model` we will also try to implement this approach on various other language models like BERT,GPT-2,etc,. 
-``` CSS
-code {
-	font-family:'Fira Code';
-	font-size: 12px;
-	overflow-x: auto;
-	overflow-y: hidden;
-	padding: 1px;
-	min-width: 0;
-	background-color: var(--light-gray)!important;
-	margin-bottom: 10px;
-}
+
+```python
+@app.route("/blog")
+def blog_page():
+	global d;
+	dir_lis = list_dir('pages/blog')
+	d = {}
+	for i in dir_lis:
+		temp,article_info = md_to_html("pages/blog/"+i)
+		article_info['url'] = "/"+article_info['slug']
+		if i[:-3] == article_info['slug']:
+			d[article_info['title']] = [
+				article_info['date']]+[article_info['url']]
+	return render_template('blog.html', file_dict=d)
 ```
 
 #### References

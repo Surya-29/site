@@ -1,26 +1,31 @@
-from flask import Flask, render_template
-from feedgen.feed import FeedGenerator
+from flask import Flask, render_template, Response
 import markdown2
 import os
+import feed
 
 app = Flask(__name__)
+pages = []
+d = {}
+
 
 @app.route("/")
 def home_page():
-    return render_template('index.html', the_title='么 Itnaava 么')
-
-@app.route("/blog")
-def blog_page():
-    global d;
     dir_lis = list_dir('pages/blog')
-    d = {}
     for i in dir_lis:
-        temp,article_info = md_to_html("pages/blog/"+i)
+        temp, article_info = md_to_html("pages/blog/"+i)
+        article_info['content'] = temp
+        pages.append(article_info)
         article_info['url'] = "/"+article_info['slug']
         if i[:-3] == article_info['slug']:
             d[article_info['title']] = [
                 article_info['date']]+[article_info['url']]
+    return render_template('index.html', the_title='么 Itnaava 么')
+
+
+@app.route("/blog")
+def blog_page():
     return render_template('blog.html', file_dict=d)
+
 
 @app.route("/blog/<url>")
 def md_test(url):
@@ -33,19 +38,22 @@ def md_test(url):
         f.writelines(body)
     return render_template('new.html')
 
+
 @app.errorhandler(404)
 def page_404(e):
     return render_template('404.html'), 404
 
-# @app.route("/blog/feed.xml")
-# def feed_generator():
-#     global d
-#     # fg = FeedGenerator()
-#     print(d)
+
+@app.route("/blog/feed.xml")
+def feed_generator():
+    feed_cont = feed.feed_gen(pages)
+    return Response(feed_cont, mimetype='text/xml')
+
 
 def list_dir(path):
     dir_list = os.listdir(path)
     return dir_list
+
 
 def md_to_html(file_path):
     with open(file_path) as f:
