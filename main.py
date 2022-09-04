@@ -8,17 +8,21 @@ pages = []
 d = {}
 
 
+class blog():
+    def __init__(self):
+        dir_lis = list_dir('pages/blog')
+        for i in dir_lis:
+            temp, article_info = md_to_html("pages/blog/"+i)
+            article_info['content'] = temp
+            pages.append(article_info)
+            article_info['url'] = "/"+article_info['slug']
+            if i[:-3] == article_info['slug']:
+                d[article_info['title']] = [
+                    article_info['date']]+[article_info['url']]
+
+
 @app.route("/")
 def home_page():
-    dir_lis = list_dir('pages/blog')
-    for i in dir_lis:
-        temp, article_info = md_to_html("pages/blog/"+i)
-        article_info['content'] = temp
-        pages.append(article_info)
-        article_info['url'] = "/"+article_info['slug']
-        if i[:-3] == article_info['slug']:
-            d[article_info['title']] = [
-                article_info['date']]+[article_info['url']]
     return render_template('index.html', the_title='么 Itnaava 么')
 
 
@@ -65,4 +69,5 @@ def md_to_html(file_path):
 
 
 if __name__ == '__main__':
+    blog()
     app.run(debug=True)

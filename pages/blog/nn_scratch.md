@@ -2,13 +2,12 @@
 
 slug: nn_scratch
 
-title: Neural Networks From Scratch
+title: Neural Networks from scratch
 
-subtitle: It's just graphs!
+subtitle: Did we just replicate our brain structure?? ( Not Really! )  
 
-date: 21 Aug, 2022
+date: 4 Sep, 2022
 
 ---
-## Intuition behind  neural networks
 
-It all started with Artificial Neural Network
+## Introduction

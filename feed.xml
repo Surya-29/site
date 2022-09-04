@@ -1,8 +1,7 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<feed xmlns="http://www.w3.org/2005/Atom"><id>http://127.0.0.1:5000/</id><title>Itnaava</title><updated>2022-09-03T04:58:52.620173+00:00</updated><author><name>Surya</name><email>abc@gmail.com</email></author><link href="http://127.0.0.1:5000/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="0.9.0">python-feedgen</generator><entry><id>nn_scratch</id><title>Neural Networks From Scratch</title><updated>2022-09-03T04:58:52.620173+00:00</updated><link href="http://127.0.0.1:5000/blog/nn_scratch" rel="alternate"/><summary type="html">&lt;h2&gt;Intuition behind  neural networks&lt;/h2&gt;
-
-&lt;p&gt;It all started with Artificial Neural Network&lt;/p&gt;
-</summary></entry><entry><id>music_gen</id><title>Music Generation</title><updated>2022-09-03T04:58:52.620173+00:00</updated><link href="http://127.0.0.1:5000/blog/music_gen" rel="alternate"/><summary type="html">&lt;h4&gt;Project Title&lt;/h4&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><id>http://127.0.0.1:5000/</id><title>Itnaava</title><updated>2022-09-04T04:37:41.838725+00:00</updated><author><name>Surya</name><email>abc@gmail.com</email></author><link href="http://127.0.0.1:5000/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="0.9.0">python-feedgen</generator><entry><id>nn_scratch</id><title>Neural Networks from scratch</title><updated>2022-09-04T04:37:41.838725+00:00</updated><link href="http://127.0.0.1:5000/blog/nn_scratch" rel="alternate"/><summary type="html">&lt;p&gt;Not Really! &lt;br /&gt;
+But before getting to that lemme just given an intuition on how it all started.&lt;/p&gt;
+</summary></entry><entry><id>music_gen</id><title>Music Generation</title><updated>2022-09-04T04:37:41.838725+00:00</updated><link href="http://127.0.0.1:5000/blog/music_gen" rel="alternate"/><summary type="html">&lt;h4&gt;Project Title&lt;/h4&gt;
 
 &lt;p&gt;Composition of music by training a model on sheet music.&lt;/p&gt;
 
