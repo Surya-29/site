@@ -1,7 +1,6 @@
 from flask import Flask, render_template, render_template_string,Response
-from flask_flatpages import FlatPages, pygmented_markdown, pygments_style_defs
+from flask_flatpages import FlatPages, pygmented_markdown
 import sys
-import os
 import markdown2
 from flask_frozen import Freezer
 import feed
