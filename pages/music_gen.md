@@ -16,7 +16,6 @@ Composition of music by training a model on sheet music.
 #### Project Members
 
 - Surya Narayan AI&DS B
-- Vishal Kalathil AI&DS B
 
 #### Abstract
 
@@ -28,19 +27,13 @@ The art of ordering tones or sound in succession, in combination is music. It is
 
 Techniques like Recurrent Neural Networks (RNN's) can be used ,which incorporates dependencies across time. Long Short Term Memory is one such variant of RNN, that is capable of capturing long-term temporal dependencies in the given music dataset and it might be a great fit for generating music.
 
-Transformer archietecture looks really promising not only for NLP problems but also for music generation since it is faster and have really good memory so extracting long-term structural patterns wouldn't be a problem.
+Transformer archietecture looks really promising not only for NLP problems but also for music generation since it is faster and have really good memory so extracting long-term structural patterns wouldn't be a problem.   
 
-**Preprocessing of musical instrument digital interface (MIDI) Files**
+#### **Preprocessing of musical instrument digital interface (MIDI) Files**   
 
 Using the <a href='https://magenta.tensorflow.org/datasets/'>instrument dataset</a> (i.e.,represented as an MIDI files) we have to extract the features required. Python libraries like music21,python-midi,etc,. can be used to perform the necessary operations.MIDI files plays an important role in extracting information about note sequence, note velocity and the time component.
 
-For training a model with this data we might need to encode the MIDI file into a music notation format i.e we can use the _music21_ library to read the MIDI file, using that returns objects that specifies the notes and chords of the music file.
-
-Now that we have extracted all the notes and chords we can create the sequences that will serve as the input of our model.(i.e Sequencing)
-
-We will approach this problem by framing music generation as a language modeling problem. The idea is to encode midi files into a vocabulary of tokens(i.e Tokenization) and have the neural network predict the next token in a sequence from thousands of midi-files.
-
-**Model Training**
+#### **Model Training**
 
 - <u>RNN based approach</u>:
 
@@ -52,7 +45,9 @@ We will approach this problem by framing music generation as a language modeling
 
 -  <u>Language models based approach</u>
 
-   >	GPT is an architecture based on Transformers decoders stacked together.The Transformer is a sequence model that leverage self-attention and that already had impressive results for generation tasks involving long-range dependencies. It is essentially the vanilla Transformer model with its encoder block and cross-attention mechanism stripped away — so that it can perform more efficiently on unsupervised tasks. This makes it well suited for music representation.
+	GPT is an architecture based on Transformers decoders stacked together.The Transformer is a sequence model that leverage self-attention and that already had impressive results for generation tasks involving long-range dependencies.    
+	
+	It is essentially the vanilla Transformer model with its encoder block and cross-attention mechanism stripped away — so that it can perform more efficiently on unsupervised tasks. This makes it well suited for music representation.
 	
 	Source from <a href='https://towardsdatascience.com/neural-networks-for-music-generation-97c983b50204?gi=57ecd2161d78'>article</a> 
 		

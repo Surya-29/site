@@ -1,24 +1,32 @@
-from flask import Flask, render_template, Response
-import markdown2
+from flask import Flask, render_template, render_template_string,Response
+from flask_flatpages import FlatPages, pygmented_markdown, pygments_style_defs
+import sys
 import os
+import markdown2
+from flask_frozen import Freezer
 import feed
 
+
+DEBUG = True
+FLATPAGES_AUTO_RELOAD = DEBUG
+FLATPAGES_EXTENSION = ['.md']
+
+
+def prerender_jinja(text):
+    text = markdown2.markdown(text, extras=[
+                              'codehilite', 'header-ids', 'code-friendly', 'fenced-code-blocks', 'break-on-newline'])
+    return pygmented_markdown(render_template_string(text))
+
+
+FLATPAGES_HTML_RENDERER = prerender_jinja
+
 app = Flask(__name__)
-pages = []
-d = {}
 
+app.config.from_object(__name__)
+pages = FlatPages(app)
+freezer = Freezer(app)
 
-class blog():
-    def __init__(self):
-        dir_lis = list_dir('pages/blog')
-        for i in dir_lis:
-            temp, article_info = md_to_html("pages/blog/"+i)
-            article_info['content'] = temp
-            pages.append(article_info)
-            article_info['url'] = "/"+article_info['slug']
-            if i[:-3] == article_info['slug']:
-                d[article_info['title']] = [
-                    article_info['date']]+[article_info['url']]
+posts = [page for page in list(pages)][:-1]
 
 
 @app.route("/")
@@ -26,27 +34,19 @@ def home_page():
     return render_template('index.html', the_title='么 Itnaava 么')
 
 
-@app.route("/blog")
+@app.route("/blog/")
 def blog_page():
-    return render_template('blog.html', file_dict=d)
+    return render_template('blog.html', pages=posts, tag="all")
 
-
-@app.route("/blog/<url>")
-def md_test(url):
-    with open('templates/new.html', 'w') as f:
-        body, article_info = md_to_html("pages/blog/"+url+'.md')
-        body = "{% extends 'base.html' %} {% block body %}\n"+'<p class=post_date>' + \
-            article_info['date']+'</p>\n'+'<h1>'+article_info['title']+'</h1>\n' + \
-            '<h2 class="subtitle">' + \
-            article_info['subtitle']+'</h2>\n'+body+"\n{% endblock %}"
-        f.writelines(body)
-    return render_template('new.html')
+@app.route("/blog/<path:path>")
+def page(path):
+    page = pages.get_or_404(path)
+    return render_template('page.html', page=page)
 
 
 @app.errorhandler(404)
 def page_404(e):
     return render_template('404.html'), 404
-
 
 @app.route("/blog/feed.xml")
 def feed_generator():
@@ -54,20 +54,8 @@ def feed_generator():
     return Response(feed_cont, mimetype='text/xml')
 
 
-def list_dir(path):
-    dir_list = os.listdir(path)
-    return dir_list
-
-
-def md_to_html(file_path):
-    with open(file_path) as f:
-        content = f.read()
-    html_cont = markdown2.markdown(
-        content, extras=['metadata', 'fenced-code-blocks', 'pyshell'])
-    meta_data = html_cont.metadata
-    return html_cont, meta_data
-
-
-if __name__ == '__main__':
-    blog()
-    app.run(debug=True)
+if __name__ == "__main__":
+    if len(sys.argv) > 1 and sys.argv[1] == "build":
+        freezer.freeze()
+    else:
+        app.run(port=8000)

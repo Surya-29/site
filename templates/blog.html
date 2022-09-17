@@ -1,10 +1,10 @@
 {% extends 'base.html' %} {% block body %}
 <table>
   <tbody>
-    {% for x in file_dict%}
+    {% for page in pages | sort(attribute='date',reverse=True) %}
     <tr>
-      <td align="left"><a href="/blog/{{file_dict[x][1]}}">{{x}}</a></td>
-      <td align="right" class="post_date">{{file_dict[x][0]}}</td>
+      <td align="left"><a href="{{ url_for('page', path=page.path) }}">{{page.title}}</a></td>
+      <td align="right" class="post_date">{{page.date}}</td>
     </tr>
     {% endfor %}
   </tbody>

@@ -1,3 +1,5 @@
 pages/.obsidian/
-pages/temp/
-
+# pages/temp/
+not_so_eff.py
+static/404_error.jpg
+templates/new.html

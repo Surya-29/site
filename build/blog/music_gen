@@ -1,41 +1,62 @@
-{% extends 'base.html' %} {% block body %}
-<p class=post_date>21 Aug, 2022</p>
-<h1>Music Generation</h1>
-<h2 class="subtitle">Using LSTM and language models</h2>
-<h4>Project Title</h4>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../static/style.css" />
+    <link rel="stylesheet" href="../static/default.css"/>
+    <link
+      href="https://fonts.googleapis.com/css?family=Fira Code"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Dosis:wght@300&display=swap"
+      rel="stylesheet"
+    />
+    <title></title>
+  </head>
+  <body>
+    <nav>
+      <ul>
+        <li><a href="/">么Itnaava么</a></li>
+        <li><a href="/blog">blog</a></li>
+        <li><a href="/reading">reading</a></li>
+        <li><a href="/resume">resume</a></li>
+        <li><a href="/about">about</a></li>
+      </ul>
+    </nav>
+    
+    <p class=post_date>21 Aug, 2022</p>
+    <h1>Music Generation</h1>  
+    <h2 class="subtitle">Using LSTM and language models</h2>
+    <h4 id="project-title">Project Title</h4>
 
 <p>Composition of music by training a model on sheet music.</p>
 
-<h4>Project Members</h4>
+<h4 id="project-members">Project Members</h4>
 
 <ul>
 <li>Surya Narayan AI&amp;DS B</li>
-<li>Vishal Kalathil AI&amp;DS B</li>
 </ul>
 
-<h4>Abstract</h4>
+<h4 id="abstract">Abstract</h4>
 
 <p>Our goal is to compose music (more like short piece of music) by training various deep learning models on a specific instrument's MIDI dataset.We will be looking into both RNN(principally LSTM networks) based and NLP based model as a music generation system,but our primary focus will be more on the latter.</p>
 
-<h4>Introduction</h4>
+<h4 id="introduction">Introduction</h4>
 
 <p>The art of ordering tones or sound in succession, in combination is music. It is a temporal relationship to produce a composition of notes having continuity and unity.Predicting the likely next few notes can be thought of as a time series problem due to the presence of long-term structural patterns in the music sequence.Also due to its sequential nature ,we can also consider this as an NLP problem.</p>
 
 <p>Techniques like Recurrent Neural Networks (RNN's) can be used ,which incorporates dependencies across time. Long Short Term Memory is one such variant of RNN, that is capable of capturing long-term temporal dependencies in the given music dataset and it might be a great fit for generating music.</p>
 
-<p>Transformer archietecture looks really promising not only for NLP problems but also for music generation since it is faster and have really good memory so extracting long-term structural patterns wouldn't be a problem.</p>
+<p>Transformer archietecture looks really promising not only for NLP problems but also for music generation since it is faster and have really good memory so extracting long-term structural patterns wouldn't be a problem.   </p>
 
-<p><strong>Preprocessing of musical instrument digital interface (MIDI) Files</strong></p>
+<h4 id="preprocessing-of-musical-instrument-digital-interface-midi-files"><strong>Preprocessing of musical instrument digital interface (MIDI) Files</strong></h4>
 
 <p>Using the <a href='https://magenta.tensorflow.org/datasets/'>instrument dataset</a> (i.e.,represented as an MIDI files) we have to extract the features required. Python libraries like music21,python-midi,etc,. can be used to perform the necessary operations.MIDI files plays an important role in extracting information about note sequence, note velocity and the time component.</p>
 
-<p>For training a model with this data we might need to encode the MIDI file into a music notation format i.e we can use the <em>music21</em> library to read the MIDI file, using that returns objects that specifies the notes and chords of the music file.</p>
-
-<p>Now that we have extracted all the notes and chords we can create the sequences that will serve as the input of our model.(i.e Sequencing)</p>
-
-<p>We will approach this problem by framing music generation as a language modeling problem. The idea is to encode midi files into a vocabulary of tokens(i.e Tokenization) and have the neural network predict the next token in a sequence from thousands of midi-files.</p>
-
-<p><strong>Model Training</strong></p>
+<h4 id="model-training"><strong>Model Training</strong></h4>
 
 <ul>
 <li><p><u>RNN based approach</u>:</p>
@@ -47,9 +68,9 @@
 <p><a href="https://arxiv.org/pdf/1909.09586.pdf">Link</a>:Brief on LSTM architecture and function. </p></li>
 <li><p><u>Language models based approach</u></p>
 
-<blockquote>
-  <p>GPT is an architecture based on Transformers decoders stacked together.The Transformer is a sequence model that leverage self-attention and that already had impressive results for generation tasks involving long-range dependencies. It is essentially the vanilla Transformer model with its encoder block and cross-attention mechanism stripped away — so that it can perform more efficiently on unsupervised tasks. This makes it well suited for music representation.</p>
-</blockquote>
+<p>GPT is an architecture based on Transformers decoders stacked together.The Transformer is a sequence model that leverage self-attention and that already had impressive results for generation tasks involving long-range dependencies.    </p>
+
+<p>It is essentially the vanilla Transformer model with its encoder block and cross-attention mechanism stripped away — so that it can perform more efficiently on unsupervised tasks. This makes it well suited for music representation.</p>
 
 <p>Source from <a href='https://towardsdatascience.com/neural-networks-for-music-generation-97c983b50204?gi=57ecd2161d78'>article</a> </p>
 
@@ -72,7 +93,7 @@
     <span class="k">return</span> <span class="n">render_template</span><span class="p">(</span><span class="s1">&#39;blog.html&#39;</span><span class="p">,</span> <span class="n">file_dict</span><span class="o">=</span><span class="n">d</span><span class="p">)</span>
 </code></pre></div>
 
-<h4>References</h4>
+<h4 id="references">References</h4>
 
 <ul>
 <li><p><strong>Dataset</strong> :</p>
@@ -95,4 +116,15 @@
 </ul></li>
 </ul>
 
-{% endblock %}
+    <footer>
+      <section class="footer">
+        <a href="/blog/feed.xml">
+          <img alt="rss feed" src="/static/rss.svg" width="30" />
+        </a>
+        <a href="https://github.com/Surya-29">
+          <img alt="git" src="/static/github.svg" width="35" />
+        </a>
+      </section>
+    </footer>
+  </body>
+</html>

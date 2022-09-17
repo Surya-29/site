@@ -14,7 +14,7 @@
       href="https://fonts.googleapis.com/css2?family=Dosis:wght@300&display=swap"
       rel="stylesheet"
     />
-    <title>{{the_title}}</title>
+    <title></title>
   </head>
   <body>
     <nav>
@@ -26,7 +26,12 @@
         <li><a href="/about">about</a></li>
       </ul>
     </nav>
-    {% block body %} {% endblock %}
+    
+    <p class=post_date>4 Sep, 2022</p>
+    <h1>Neural Networks from scratch</h1>  
+    <h2 class="subtitle">Did we just replicate our brain structure?? ( Not Really! )</h2>
+    <h2 id="introduction">Introduction</h2>
+
     <footer>
       <section class="footer">
         <a href="/blog/feed.xml">

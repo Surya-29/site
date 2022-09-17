@@ -1,0 +1,48 @@
+:root {
+  --light: #f4f4f4;
+  --cyan: #509c93;
+  --light-gray: #eee;
+  --medium-gray: #ddd;
+  --gray: #6a6a6a;
+  --dark: #444;
+  --darker: #222;
+}
+html {
+  background: var(--light);
+  -webkit-text-size-adjust: none;
+}
+
+::selection {
+  background: var(--medium-gray);
+  opacity: 0.3;
+}
+
+* {
+  box-sizing: border-box;
+}
+*,*::before,*::after {
+  box-sizing: inherit;
+}
+body{
+    display:flex;
+    font-family:'Dosis', sans-serif;
+    font-size: 17px;
+    max-width: 655px;
+    padding: 0 13px;
+    margin: 40px auto;
+  }
+  
+  
+@media (max-width: 385px) {
+
+    nav {
+      max-width: 150px;
+      margin: 0 auto;
+    }
+    nav li:first-child {
+      flex-basis: auto;
+      text-align: left;
+      margin-right: auto;
+    }
+  }
+  
