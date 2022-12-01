@@ -26,13 +26,11 @@ app.config.from_object(__name__)
 pages = FlatPages(app)
 freezer = Freezer(app)
 
-posts = list(list(pages))[:-1]
-
+posts = [page for page in list(pages)][:-1]
 
 @app.route("/")
 def home_page():
-    return render_template('index.html', the_title='Surya Narayan')
-
+    return render_template('index.html', the_title='么 Itnaava 么')
 
 @app.route("/blog/")
 def blog_page():
@@ -43,6 +41,9 @@ def page(path):
     page = pages.get_or_404(path)
     return render_template('page.html', page=page)
 
+@app.route("/art")
+def art_page():
+    return render_template('art.html')
 
 @app.errorhandler(404)
 def page_404(e):
