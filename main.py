@@ -26,7 +26,7 @@ app.config.from_object(__name__)
 pages = FlatPages(app)
 freezer = Freezer(app)
 
-posts = [page for page in list(pages)][:-1]
+posts = list(list(pages))[:-1]
 
 
 @app.route("/")
