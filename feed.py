@@ -5,7 +5,7 @@ def feed_gen(pages):
     fg = FeedGenerator()
 
     fg.id('http://127.0.0.1:5000/')
-    fg.title('Itnaava')
+    fg.title('Surya Narayan')
     fg.author({'name': 'Surya', 'email': 'abc@gmail.com'})
     fg.link(href='http://127.0.0.1:5000/', rel='alternate')
 

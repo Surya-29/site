@@ -31,7 +31,7 @@ posts = [page for page in list(pages)][:-1]
 
 @app.route("/")
 def home_page():
-    return render_template('index.html', the_title='么 Itnaava 么')
+    return render_template('index.html', the_title='Surya Narayan')
 
 
 @app.route("/blog/")

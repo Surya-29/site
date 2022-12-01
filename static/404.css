@@ -24,13 +24,24 @@ html {
   box-sizing: inherit;
 }
 body{
-    display:flex;
-    font-family:'Dosis', sans-serif;
+    display:block;
+    font-family:'Inconsolata', monospace;
     font-size: 17px;
     max-width: 655px;
     padding: 0 13px;
     margin: 40px auto;
-  }
+}
+a{
+  color:var(--dark);
+  transition: all 0.3s ease 0s;
+}
+a:hover{
+  color:var(--gray);
+  background-image: linear-gradient(90deg, #D4145A, #FBB03B);
+  background-position:bottom;
+  background-size: 100% 30%;
+  background-repeat:repeat-y;
+}
   
   
 @media (max-width: 385px) {
