@@ -51,19 +51,19 @@ freezer = Freezer(app)
 posts = [page for page in list(pages)][:-1]
 
 
-@app.route("/")
+@app.route("site/")
 def home_page():
     return render_template("index.html", the_title="Surya")
 
 
-@app.route("/blog/")
+@app.route("site/blog/")
 def blog_page():
     return render_template("blog.html", pages=posts, tag="all"), {
         "Content-Type": "text/html; charset=utf-8"
     }
 
 
-@app.route("/blog/<path:path>.html")
+@app.route("site/blog/<path:path>.html")
 def page(path):
     page = pages.get_or_404(path)
     return render_template("page.html", page=page), {
@@ -81,7 +81,7 @@ def page_404(e):
     return render_template("404.html"), 404
 
 
-@app.route("/blog/feed.xml")
+@app.route("site/blog/feed.xml")
 def feed_generator():
     feed_cont = feed.feed_gen(pages)
     return Response(feed_cont, mimetype="text/xml")
