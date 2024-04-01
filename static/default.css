@@ -5,7 +5,7 @@ td.linenos .special { color: #000000; background-color: #ffffc0; padding-left: 5
 span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 5px; padding-right: 5px; }
 .codehilite .hll { background-color: #ffffcc }
 .codehilite { background: #ffffff; }
-.codehilite .c { color: #999988; font-style: italic } /* Comment */
+.codehilite .c { color: #a4a400; font-style: italic } /* Comment */
 .codehilite .err { color: #a61717; background-color: #e3d2d2 } /* Error */
 .codehilite .k { font-weight: bold } /* Keyword */
 .codehilite .o { font-weight: bold } /* Operator */

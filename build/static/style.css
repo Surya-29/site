@@ -25,18 +25,22 @@ html {
   box-sizing: inherit;
 }
 body{
-  font-family:'Dosis', sans-serif;
-  font-size: 17px;
-  letter-spacing:0.25px;
-  word-spacing: 1.25px;
-  max-width: 655px;
+  /* font-family:'Dosis', sans-serif; */
+  /* font-family: 'Barlow', sans-serif; */
+  /* font-family: 'Space Mono', monospace; */
+  font-family: 'Jost',sans-serif;
+  /* font-family: 'Inconsolata', monospace; */
+  font-size: 20px;
+  line-height:auto;
+  max-width: 755px;
   padding: 0 13px;
   margin: 40px auto;
 }
 
 .intro{
-  padding: 50px 0 50px 0;
+  padding: 20px 0 20px 0;
 }
+
 code {
   font-family:'Fira Code';
   font-size: 12px;
@@ -89,25 +93,32 @@ ul {
   margin-inline-end: 0px;
   padding-inline-start: 40px;
 }
-nav {
-  display: block;
+header{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
-nav ul{
-  list-style-type:none;
-  padding:0;
-  margin:0;
-  display:flex;
-  flex-flow:wrap;
-  justify-content:right;
-  align-items:center;
-  gap:0.5rem;
+.logo{
+  cursor: pointer;
 }
-nav li:first-child {
-  flex-basis: 70%;
-  text-align: left;
-  font-size: 20px;
-  justify-content: left;
+.nav_links{
+  list-style: none;
 }
+.nav_links li{
+  display: inline-block;  
+}
+a{
+  transition: all 0.5s ease 0.1s;
+}
+a:hover{
+  color:var(--darker);
+  background-image: linear-gradient(90deg, var(--gray),#eee);
+  background-position:bottom;
+  background-size: 100% 30%;
+  background-repeat:repeat-y;
+}
+
+
 footer{
   padding-top: 30px;
 }
