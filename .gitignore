@@ -1,9 +1,8 @@
 env
-pages/.obsidian/
+pages
 # pages/temp/
 not_so_eff.py
 static/404_error.jpg
 templates/new.html
 gradients.txt
 __pycache__
-
