@@ -1,4 +1,10 @@
-{% extends "base.html" %}{% block body %}
+{% extends "base.html" %}{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+<link rel="stylesheet" href="{{ url_for('static', filename='default.css') }}" />
+{% endblock %}
+
+
+{% block body %}
     {{toc | safe}}
     <p class=post_date>{{page.meta.date}}</p>
     <h1>{{ page.title }}</h1>  
